@@ -1,15 +1,18 @@
+
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 3000;
 var Todo = require("./routes/todo");
 var bodyParser = require('body-parser');
 
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req,res){
-    res.send("ROOT ROUTE");
+    res.send("index.html");
 });
 
 
