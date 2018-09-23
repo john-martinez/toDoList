@@ -26,7 +26,12 @@ function listTodos(todos){
 // ADD
 $('#todoInput').keypress(function(key){
     if (key.which == 13){
-        var newData = {name: $('#todoInput').val() };
+       createTodo()
+    }
+});
+
+function createTodo(todo){
+    var newData = {name: $('#todoInput').val() };
         $.post('api/todos', newData)
         .then(function(data){
             console.log(data);
@@ -36,8 +41,9 @@ $('#todoInput').keypress(function(key){
             console.log(err);
         });
         $('#todoInput').val('');
-    }
-});
+}
+
+
 
 // UPDATE
 $('.list').on('click', 'li', function(event){
