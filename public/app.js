@@ -62,3 +62,19 @@ function updateTodo(todo){
     })
     
 }
+
+// DELETE
+$('.list').on('click', 'span', function(event){
+    deleteTodo($(this).parent());
+})
+
+function deleteTodo(todo){
+    $.ajax({
+        method: 'DELETE',
+        url: '/api/todos/' + todo.data('id')
+    })
+    .then(function(data){
+        todo.remove();
+       
+    })
+}
